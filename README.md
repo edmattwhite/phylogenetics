@@ -31,20 +31,20 @@ This script is where the bulk of the computation happens, taking the data that w
 
 *Using the scripts:*
 
-1)	Best done in Windows – use batch file run_analysis and it will do everything for you automatically (requires you to find Rscript.exe, but this is fairly easy)
+*	Best done in Windows – use batch file run_analysis and it will do everything for you automatically (requires you to find Rscript.exe, but this is fairly easy)
 
-2)	Otherwise have to use setwd(“path”) for the location of the cluster_analysis folder
+*	Otherwise have to use setwd(“path”) for the location of the cluster_analysis folder
 
-3)	Input file has to be in location cluster_analysis/comparativeAnalysis_table_clusters_counts.txt, and must be a tab delimited text file. 
+*	Input file has to be in location cluster_analysis/comparativeAnalysis_table_clusters_counts.txt, and must be a tab delimited text file. 
 
-4)	Make sure you have moved or closed pdf plots before running the scripts
+*	Make sure you have moved or closed pdf plots before running the scripts
 
-5)	Outputs are plots and several tables of note:
+*	Outputs are plots and several tables of note:
 
-  ..1.	hybrid_list tries to find hybrids in the data – and gives candidate parents as well as the proportion of its cluster profile inherited from the parents.
+..*	hybrid_list tries to find hybrids in the data – and gives candidate parents as well as the proportion of its cluster profile inherited from the parents.
   
-  ..2.	tree_list gives the text based generation by generation construction of the tree, with the matching probabilities for each step, as well as a list of the clusters that don’t agree with the pairing.
+..*	tree_list gives the text based generation by generation construction of the tree, with the matching probabilities for each step, as well as a list of the clusters that don’t agree with the pairing.
   
-  ..3.	distance_matrix gives the distance from perfect match for each pairing possible
+..*	distance_matrix gives the distance from perfect match for each pairing possible
   
-  ..4.	cluster_number contains the number of clusters used for the construction of the tree.
+..*	cluster_number contains the number of clusters used for the construction of the tree.
