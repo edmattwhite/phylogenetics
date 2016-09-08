@@ -41,10 +41,10 @@ This script is where the bulk of the computation happens, taking the data that w
 
 5)	Outputs are plots and several tables of note:
 
-  a.	hybrid_list tries to find hybrids in the data – and gives candidate parents as well as the proportion of its cluster profile inherited from the parents.
+  ..1.	hybrid_list tries to find hybrids in the data – and gives candidate parents as well as the proportion of its cluster profile inherited from the parents.
   
-  b.	tree_list gives the text based generation by generation construction of the tree, with the matching probabilities for each step, as well as a list of the clusters that don’t agree with the pairing.
+  ..2.	tree_list gives the text based generation by generation construction of the tree, with the matching probabilities for each step, as well as a list of the clusters that don’t agree with the pairing.
   
-  c.	distance_matrix gives the distance from perfect match for each pairing possible
+  ..3.	distance_matrix gives the distance from perfect match for each pairing possible
   
-  d.	cluster_number contains the number of clusters used for the construction of the tree.
+  ..4.	cluster_number contains the number of clusters used for the construction of the tree.
