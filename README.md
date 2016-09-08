@@ -14,10 +14,10 @@ Building on the estimates from mcmc, this script produces a table which is later
 *tbbm - Tree Builder by Bayesian Metric*
 This script is where the bulk of the computation happens, taking the data that we had previously and turning it into a phylogenetic tree.
   
-  +**Part 1)	Sorting the cluster frequency data**
+  **Part 1)	Sorting the cluster frequency data**
   >Here we take the data and sort it into “generation groups” for each cluster. This is done by taking the frequency data, seeing which lie closest to each other and then “grouping them”. In this way we build up an array holding the information of how closely grouped the frequency data is, and which species are “closest” to each other. It is worth noting that not all clusters are counted equally in this step – we take those with the highest birth rates r and those with the lowest transfer rates lambda and give these the highest weighting working down – weightings are assigned uniformly across generations per cluster. Take number of generations = number of species as this is of the correct order of “attachments” that must occur. This sorting is neither a purely quantitative or stochastic sort, rather it takes elements from both in an attempt to produce accurate trees with minimal further calculation. 
   
-  +**Part 2) Analysing the sorted array**
+  **Part 2) Analysing the sorted array**
     Fed into dendrogram plotting package after summing over clusters and generations, and normalising to give a comparable distance measure – this is what produces the plots. The distance scale on the plot axis represents how closely we have to “look” before two species are distinguished: a score of 0 would imply that two species are the same, whilst a score of 1 would imply that two species are so distinct that they could never be ‘paired’ using this method. Slightly more sophisticated procedure take the species and cluster them together one by one based on how many clusters they each share, assigning a probability to each pairing, and forming from each pair a placeholder species which is used as the representative when further associating a pairing with another species or even another pair. Hybrid spotting is then performed by taking each species and pairing all the others to see whether they can account for the cluster profile of a daughter species between them. Most likely parents for each cluster are then recorded, as well as the proportion of the child’s cluster profile that they can account for.
 
 *Probability Assignment to Pairing:*
@@ -30,12 +30,12 @@ This script is where the bulk of the computation happens, taking the data that w
 
 *Using the scripts:*
 
-    1)	Best done in Windows – use batch file run_analysis and it will do everything for you automatically (requires you to find Rscript.exe, but this is fairly easy)
-    2)	Otherwise have to use setwd(“path”) for the location of the cluster_analysis folder
-    3)	Input file has to be in location cluster_analysis/comparativeAnalysis_table_clusters_counts.txt, and must be a tab delimited text file. 
-    4)	Make sure you have moved or closed pdf plots before running the scripts
-    5)	Outputs are plots and several tables of note:
-      a.	hybrid_list tries to find hybrids in the data – and gives candidate parents as well as the proportion of its cluster profile inherited from the parents.
-      b.	tree_list gives the text based generation by generation construction of the tree, with the matching probabilities for each step, as well as a list of the clusters that don’t agree with the pairing.
-      c.	distance_matrix gives the distance from perfect match for each pairing possible
-      d.	cluster_number contains the number of clusters used for the construction of the tree.
+1)	Best done in Windows – use batch file run_analysis and it will do everything for you automatically (requires you to find Rscript.exe, but this is fairly easy)
+2)	Otherwise have to use setwd(“path”) for the location of the cluster_analysis folder
+3)	Input file has to be in location cluster_analysis/comparativeAnalysis_table_clusters_counts.txt, and must be a tab delimited text file. 
+4)	Make sure you have moved or closed pdf plots before running the scripts
+5)	Outputs are plots and several tables of note:
+  a.	hybrid_list tries to find hybrids in the data – and gives candidate parents as well as the proportion of its cluster profile inherited from the parents.
+  b.	tree_list gives the text based generation by generation construction of the tree, with the matching probabilities for each step, as well as a list of the clusters that don’t agree with the pairing.
+  c.	distance_matrix gives the distance from perfect match for each pairing possible
+  d.	cluster_number contains the number of clusters used for the construction of the tree.
