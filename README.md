@@ -12,6 +12,7 @@ This script uses Markov Chain Monte Carlo with a Metropolis (likelihood ratio ba
 Building on the estimates from mcmc, this script produces a table which is later used to assign probabilities to cluster matches in tbbm. It is here that we cut down to the number of clusters that will be used for the construction of the tree – as you can see this script is fairly simple. One thing to note is that when the unconditional probability of a specific data point is calculated we use an empirical approximation. The exact integral can be performed, however it is VERY computationally expensive – as a 2D integral over an unbounded region with very small function values it is also prone to large computational errors. It is because of this approximation that probabilities have to be tweaked in the next section, by smoothing out and giving each cluster frequency band it can lie within when assigning probability through the ecdf.
 
 *tbbm - Tree Builder by Bayesian Metric*
+
 This script is where the bulk of the computation happens, taking the data that we had previously and turning it into a phylogenetic tree.
   
   **Part 1)	Sorting the cluster frequency data**
@@ -31,11 +32,19 @@ This script is where the bulk of the computation happens, taking the data that w
 *Using the scripts:*
 
 1)	Best done in Windows – use batch file run_analysis and it will do everything for you automatically (requires you to find Rscript.exe, but this is fairly easy)
+
 2)	Otherwise have to use setwd(“path”) for the location of the cluster_analysis folder
+
 3)	Input file has to be in location cluster_analysis/comparativeAnalysis_table_clusters_counts.txt, and must be a tab delimited text file. 
+
 4)	Make sure you have moved or closed pdf plots before running the scripts
+
 5)	Outputs are plots and several tables of note:
+
   a.	hybrid_list tries to find hybrids in the data – and gives candidate parents as well as the proportion of its cluster profile inherited from the parents.
+  
   b.	tree_list gives the text based generation by generation construction of the tree, with the matching probabilities for each step, as well as a list of the clusters that don’t agree with the pairing.
+  
   c.	distance_matrix gives the distance from perfect match for each pairing possible
+  
   d.	cluster_number contains the number of clusters used for the construction of the tree.
